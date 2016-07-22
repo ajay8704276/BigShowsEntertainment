@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "922242221985",
+    "project_id": "bigshowsent"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:922242221985:android:3892d032fb01e147",
+        "android_client_info": {
+          "package_name": "com.app.bigshows"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "922242221985-vfm4tl0krqmijbsvlq5b1meiidknijcp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.bigshows",
+            "certificate_hash": "AD218196A4C924AA61EAAA55446F9E45D377FB3D"
+          }
+        },
+        {
+          "client_id": "922242221985-85rdn6brou4vkfdnkdqe063duu6hii5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEldtuNnFr7VmrY6Mimcqj1W3azR60HTw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

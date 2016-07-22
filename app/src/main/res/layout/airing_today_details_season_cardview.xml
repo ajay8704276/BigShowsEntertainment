@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:background="@color/cardview_light_background"
+        android:id="@+id/airing_today_details_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:id="@+id/airing_today_details_images"
+                android:layout_width="match_parent"
+                android:layout_height="180dp" />
+            <TextView
+                android:layout_below="@+id/airing_today_details_images"
+                android:paddingLeft="32dp"
+                android:textStyle="bold|italic"
+                android:text="Hello Ajay"
+                android:id="@+id/airing_today_details_airdate"
+                android:textSize="@dimen/maetrial_card_tv_on_air_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_below="@+id/airing_today_details_airdate"
+                android:paddingLeft="32dp"
+                android:textStyle="bold|italic"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:text="Air Date"
+                android:textSize="@dimen/activity_horizontal_margin"
+                android:id="@+id/airing_today_details_episode_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textStyle="bold|italic"
+                android:paddingTop="6dp"
+                android:text="More Info"
+                android:textSize="@dimen/activity_horizontal_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/airing_today_details_season_number"
+                android:layout_below="@+id/airing_today_details_images"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="38dp" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.app.bigshows">
+
+    <uses-sdk android:minSdkVersion="21"/>
+
+    <!-- Permission -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Include following permission if you want to cache images on SD card -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <application
+        android:name=".BigShowsEntertainmentApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <activity
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".activity.home.BigShowsHomeActivity"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <!--<activity android:name=".activity.home.BigShowsHomeActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            />-->
+
+
+        <!-- Movies Tab Activity -->
+        <activity android:name=".activity.movies.MovieActivity"
+            android:label=""
+            android:parentActivityName=".activity.home.BigShowsHomeActivity"
+            android:theme="@style/MyMaterialTheme" />
+
+
+
+        <!-- Discover Tab Activity -->
+        <activity android:name=".activity.discover.DiscoverActivity"
+            android:label=""
+            android:parentActivityName=".activity.home.BigShowsHomeActivity"
+            android:theme="@style/MyMaterialTheme"/>
+
+
+        <!-- People Tab Activity -->
+        <activity android:name=".activity.people.PeopleActivity"
+            android:label=""
+            android:parentActivityName=".activity.home.BigShowsHomeActivity"
+            android:theme="@style/MyMaterialTheme"/>
+
+
+        <!--Profile activity -->
+        <activity android:name=".activity.profile.ProfileActivity"
+            android:label=""
+            android:parentActivityName=".activity.home.BigShowsHomeActivity"
+            android:theme="@style/MyMaterialTheme"/>
+
+        <!-- TVShows Tab activity-->
+        <activity android:name=".activity.tvshows.TVShowsActivity"
+            android:label=""
+            android:parentActivityName=".activity.home.BigShowsHomeActivity"
+            android:theme="@style/MyMaterialTheme"/>
+
+
+        <activity android:name=".activity.home.AiringTodayDetailActivity"
+            android:label=""
+            android:parentActivityName=".activity.home.BigShowsHomeActivity"
+            android:theme="@style/MyMaterialTheme"/>
+
+
+        <!-- Optionally Register receiver for   Analytics receiver and analytics services to support background dispatching
+         on non google play devices
+         -->
+        <receiver
+            android:name="com.google.android.gms.analytics.AnalyticsReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.analytics.ANALYTICS_DISPATCH" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.google.android.gms.analytics.AnalyticsService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!--
+             Optionally, register CampaignTrackingReceiver and CampaignTrackingService to enable
+             installation campaign reporting
+        -->
+        <receiver
+            android:name="com.google.android.gms.analytics.CampaignTrackingReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
+
+
+    </application>
+
+</manifest>

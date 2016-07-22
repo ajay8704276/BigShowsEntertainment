@@ -1,0 +1,95 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <!-- Line Separator -->
+    <style name="line_separator">
+        <item name="android:padding">@dimen/nav_header_vertical_spacing</item>
+        <item name="android:background">@color/linear_separator_color</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">4dp</item>
+        <!--<item name="android:background">?android:attr/listDivider</item>-->
+    </style>
+
+    <!-- Line nav mennu separator-->
+    <style name="nav_menu_line_separator">
+        <item name="android:padding">@dimen/nav_header_vertical_spacing</item>
+        <item name="android:background">@color/linear_separator_color</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <!--<item name="android:background">?android:attr/listDivider</item>-->
+    </style>
+
+
+    <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
+
+    </style>
+
+    <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <!-- Custom Style search bar material -->
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Gets rid of the search icon -->
+        <item name="searchIcon">@android:drawable/ic_menu_search</item>
+        <!-- Gets rid of the "underline" in the text -->
+        <item name="queryBackground">@null</item>
+        <!-- Gets rid of the search icon when the SearchView is expanded -->
+        <item name="searchHintIcon">@null</item>
+        <!-- The hint text that appears when the user has not typed anything -->
+        <item name="queryHint">@string/search_menu_string</item>
+    </style>
+
+    <!--<style name="MaterialSearchViewStyle">-->
+        <!--&lt;!&ndash; Background for the search bar &ndash;&gt;-->
+        <!--<item name="searchBackground">@color/theme_primary</item>-->
+
+        <!--&lt;!&ndash; Change voice icon &ndash;&gt;-->
+        <!--<item name="searchVoiceIcon">@drawable/ic_action_voice_search_inverted</item>-->
+
+        <!--&lt;!&ndash; Change clear text icon &ndash;&gt;-->
+        <!--<item name="searchCloseIcon">@drawable/ic_action_navigation_close_inverted</item>-->
+
+        <!--&lt;!&ndash; Change up icon &ndash;&gt;-->
+        <!--<item name="searchBackIcon">@drawable/ic_action_navigation_arrow_back_inverted</item>-->
+
+        <!--&lt;!&ndash; Change icon for the suggestions &ndash;&gt;-->
+        <!--<item name="searchSuggestionIcon">@drawable/ic_suggestion</item>-->
+
+        <!--&lt;!&ndash; Change background for the suggestions list view &ndash;&gt;-->
+        <!--<item name="searchSuggestionBackground">@android:color/white</item>-->
+
+        <!--&lt;!&ndash; Change text color for edit text. This will also be the color of the cursor &ndash;&gt;-->
+        <!--<item name="android:textColor">@color/theme_primary_text_inverted</item>-->
+
+        <!--&lt;!&ndash; Change hint text color for edit text &ndash;&gt;-->
+        <!--<item name="android:textColorHint">@color/theme_secondary_text_inverted</item>-->
+
+        <!--&lt;!&ndash; Hint for edit text &ndash;&gt;-->
+        <!--<item name="android:hint">@string/search_hint</item>-->
+    <!--</style>-->
+
+
+</resources>

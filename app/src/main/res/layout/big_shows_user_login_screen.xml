@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@mipmap/blurwallpaper"
+    android:padding="@dimen/nav_header_vertical_spacing"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_margin="@dimen/nav_header_vertical_spacing"
+        android:src="@drawable/airbnb_horizontal_lockup_white_web"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp" />
+    <LinearLayout
+        android:padding="@dimen/nav_header_vertical_spacing"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <android.support.design.widget.TextInputLayout
+            android:padding="@dimen/activity_horizontal_margin"
+            android:id="@+id/big_show_user_login_user_name_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:inputType="textEmailAddress"
+                android:hint="@string/big_show_user_login_user_email_hint"
+                android:id="@+id/big_show_user_login_user_email_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:padding="@dimen/activity_horizontal_margin"
+            android:id="@+id/big_show_user_login_user_password_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:inputType="textPassword"
+                android:hint="@string/big_show_user_login_user_password_hint"
+                android:id="@+id/big_show_user_login_user_password_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/rect_border"
+            android:id="@+id/big_show_user_login_tmdb_signup_tbn"
+            android:layout_height="50dp"
+            android:text="@string/Sign_In_Button"
+            android:layout_width="match_parent"
+            />
+
+        <include
+            layout="@layout/item_divider"/>
+
+        <com.google.android.gms.common.SignInButton
+            android:background="@color/cardview_dark_background"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/connectWithGoogleButton"
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:text="Google Sign In"
+            />
+
+      <include
+          layout="@layout/item_divider"/>
+        <com.facebook.login.widget.LoginButton
+            android:drawableLeft="@drawable/ic_menu_share"
+            android:id="@+id/connectWithFbButton"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/fbloginText"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:textStyle="bold|italic"
+            android:textAlignment="center"
+            android:text="@string/disclaimer_text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

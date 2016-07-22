@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/material_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:background="@color/cardview_light_background"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:id="@+id/home_on_the_air_images"
+                android:layout_width="match_parent"
+                android:layout_height="220dp" />
+            <TextView
+                android:layout_below="@+id/home_on_the_air_images"
+                android:paddingLeft="32dp"
+                android:textStyle="bold|italic"
+                android:text="Hello Ajay"
+                android:id="@+id/tv_on_the_air_title"
+                android:textSize="@dimen/maetrial_card_tv_on_air_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_below="@+id/tv_on_the_air_title"
+                android:paddingLeft="32dp"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:text="Air Date"
+                android:textSize="@dimen/activity_horizontal_margin"
+                android:id="@+id/tv_on_the_air_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:src="@android:drawable/ic_dialog_info"
+                android:id="@+id/tv_on_the_air_moreinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/home_on_the_air_images"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="55dp" />
+
+            <TextView
+                android:paddingTop="6dp"
+                android:text="More Info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:layout_below="@+id/tv_on_the_air_moreinfo"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="38dp" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

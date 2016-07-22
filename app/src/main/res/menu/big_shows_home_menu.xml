@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_search"
+        app:actionLayout="@layout/simple_search_view_item"
+        android:title="@string/search_menu_string"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="ifRoom|collapseActionView"
+        />
+    <item
+        android:orderInCategory="100"
+        app:showAsAction="collapseActionView"
+        android:id="@+id/big_shows_home_menu_log_out"
+        android:title="@string/log_out"
+        />
+    <item
+        android:orderInCategory="100"
+        app:showAsAction="collapseActionView"
+        android:id="@+id/big_shows_home_menu_log_in"
+        android:title="@string/log_in"
+        />
+
+</menu>
