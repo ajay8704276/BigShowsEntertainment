@@ -1,4 +1,4 @@
-package com.app.bigshows.adapters.homepage;
+package com.app.bigshows.adapters.homepage.ontheair;
 
 import android.content.Context;
 import android.content.Intent;

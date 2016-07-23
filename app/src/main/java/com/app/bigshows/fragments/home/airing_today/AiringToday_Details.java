@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.app.bigshows.BigShowsEntertainmentApp;
 import com.app.bigshows.R;
-import com.app.bigshows.adapters.homepage.AiringToday_Details_SeasonsAdapter;
+import com.app.bigshows.adapters.homepage.ontheair.AiringToday_Details_SeasonsAdapter;
 import com.app.bigshows.model.home.tvshows.AiringTodayTVShows;
 import com.app.bigshows.model.home.tvshows.AiringTodayTVShows_CreatedByWrapper;
 import com.app.bigshows.model.home.tvshows.AiringTodayTVShows_GenreWrapper;

@@ -1,4 +1,4 @@
-package com.app.bigshows.adapters.homepage;
+package com.app.bigshows.adapters.homepage.ontheair;
 
 /**
  * Created by Ajay Kumar on 7/13/2016.

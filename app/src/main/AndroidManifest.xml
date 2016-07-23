@@ -110,6 +110,13 @@
         <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
 
 
+        <activity
+            android:label=""
+            android:name=".activity.home.NowPlayingDetailActivity"
+            android:theme="@style/MyMaterialTheme"
+            android:parentActivityName=".activity.home.BigShowsHomeActivity"/>
+
+
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.app.bigshows.adapters.homepage;
+package com.app.bigshows.adapters.homepage.ontheair;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

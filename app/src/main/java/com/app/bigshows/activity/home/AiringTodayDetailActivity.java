@@ -1,15 +1,11 @@
 package com.app.bigshows.activity.home;
 
-import android.app.SearchManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +13,7 @@ import android.view.View;
 
 import com.app.bigshows.BigShowsEntertainmentApp;
 import com.app.bigshows.R;
-import com.app.bigshows.adapters.homepage.AiringTodayDetailActivityAdapter;
+import com.app.bigshows.adapters.homepage.ontheair.AiringTodayDetailActivityAdapter;
 import com.app.bigshows.adapters.search.SearchAdapter;
 import com.app.bigshows.fragments.home.airing_today.AiringToday_Credits;
 import com.app.bigshows.fragments.home.airing_today.AiringToday_Details;

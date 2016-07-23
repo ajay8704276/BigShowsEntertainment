@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.app.bigshows.BigShowsEntertainmentApp;
 import com.app.bigshows.R;
-import com.app.bigshows.adapters.homepage.OnTheAirResultAdapter;
+import com.app.bigshows.adapters.homepage.ontheair.OnTheAirResultAdapter;
 import com.app.bigshows.model.home.tvshows.OnTheAir;
 import com.app.bigshows.model.home.tvshows.OnTheAir_Results;
 import com.app.bigshows.rest.ApiClient;

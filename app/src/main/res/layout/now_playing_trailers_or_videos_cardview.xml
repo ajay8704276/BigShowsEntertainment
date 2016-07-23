@@ -5,7 +5,7 @@
     android:layout_height="wrap_content" >
 
     <android.support.v7.widget.CardView
-        android:id="@+id/airing_today_similar_tvvideos_cardview"
+        android:id="@+id/now_playing_trailers_cardview"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
@@ -20,19 +20,20 @@
 
 
         <com.google.android.youtube.player.YouTubeThumbnailView
-            android:id="@+id/airing_today_similar_tvvideos_youtube_thumbnail"
+            android:id="@+id/nowPlaying_trailers_youtube_thumbnail"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:scaleType="centerCrop"
             android:visibility="visible"/>
 
-        <RelativeLayout android:id="@+id/relativeLayout_over_youtube_thumbnail"
+        <RelativeLayout
+            android:id="@+id/relativeLayout_over_youtube_thumbnail"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:background="@android:color/transparent"
             android:visibility="visible">
 
-            <ImageView android:id="@+id/airing_today_similar_tvvideos_btnYoutube_player"
+            <ImageView android:id="@+id/now_playing_trailers_btnYoutube_player"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="center"
@@ -41,7 +42,7 @@
                 android:text="HELLO"
                 android:id="@+id/youtube_video_name"
                 android:paddingTop="@dimen/activity_horizontal_margin"
-                android:layout_below="@+id/airing_today_similar_tvvideos_btnYoutube_player"
+                android:layout_below="@+id/now_playing_trailers_btnYoutube_player"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

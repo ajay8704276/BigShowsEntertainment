@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 
 import com.app.bigshows.BigShowsEntertainmentApp;
 import com.app.bigshows.R;
-import com.app.bigshows.adapters.homepage.AiringToday_Similar_TVShowsAdapter;
-import com.app.bigshows.adapters.homepage.AiringToday_Similar_TVVideosAdapter;
+import com.app.bigshows.adapters.homepage.ontheair.AiringToday_Similar_TVShowsAdapter;
+import com.app.bigshows.adapters.homepage.ontheair.AiringToday_Similar_TVVideosAdapter;
 import com.app.bigshows.model.home.tvshows.AirinTodayTVShowsSimilar_TVVideos;
 import com.app.bigshows.model.home.tvshows.AirinTodayTVShowsSimilar_TVVideos_ResultWrapper;
 import com.app.bigshows.model.home.tvshows.AiringTodayTVShowsSimilar_TVShows;

@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import com.app.bigshows.BigShowsEntertainmentApp;
 import com.app.bigshows.R;
-import com.app.bigshows.adapters.homepage.AiringToday_Credits_castAdpater;
-import com.app.bigshows.adapters.homepage.AiringToday_Credits_crewAdapter;
+import com.app.bigshows.adapters.homepage.ontheair.AiringToday_Credits_castAdpater;
+import com.app.bigshows.adapters.homepage.ontheair.AiringToday_Credits_crewAdapter;
 import com.app.bigshows.model.home.tvshows.AiringTodayTVShowsCredits;
 import com.app.bigshows.model.home.tvshows.AiringTodayTVShowsCredits_CastWrapper;
 import com.app.bigshows.model.home.tvshows.AiringTodayTVShowsCredits_CrewWrapper;
