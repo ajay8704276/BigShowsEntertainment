@@ -32,8 +32,9 @@ public class NowPlayingTrailersorVideos extends Fragment {
     private static NowPlayingTrailersorVideos mNowPlayingTrailersorVideos;
     private RecyclerView mTrailersRV;
     private int movieId;
+    private View view;
 
-    private NowPlayingTrailersorVideos( int movieId) {
+    private NowPlayingTrailersorVideos(int movieId) {
 
         this.movieId = movieId;
     }
@@ -46,15 +47,19 @@ public class NowPlayingTrailersorVideos extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.now_playing_trailers, container, false);
 
-        initViews(view);
+        if (view == null) {
+            View view = inflater.inflate(R.layout.now_playing_trailers, container, false);
 
+            initViews(view);
+
+            return view;
+        }
         return view;
     }
 
 
-    private void initViews(View  view){
+    private void initViews(View view) {
 
         mTrailersRV = (RecyclerView) view.findViewById(R.id.now_playing_trailersRV);
         mTrailersRV.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -67,21 +72,21 @@ public class NowPlayingTrailersorVideos extends Fragment {
             @Override
             public void onResponse(Call<NowPlayingTrailers> call, Response<NowPlayingTrailers> response) {
 
-                if(response.isSuccessful()){
-                    if(response.body()!=null){
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
 
                         List<NowPlayingTrailers.Result> results = response.body().getResults();
-                        NowPlayingTrailersAdapter mNowPlayingTrailersAdapter = new NowPlayingTrailersAdapter(results,getContext());
+                        NowPlayingTrailersAdapter mNowPlayingTrailersAdapter = new NowPlayingTrailersAdapter(results, getContext());
                         mTrailersRV.setAdapter(mNowPlayingTrailersAdapter);
                     }
-                }else {
-                    Toast.makeText(getContext(),response.message().toString(),Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getContext(), response.message().toString(), Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<NowPlayingTrailers> call, Throwable t) {
-                Toast.makeText(getContext(),t.getMessage().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), t.getMessage().toString(), Toast.LENGTH_LONG).show();
 
             }
         });
@@ -94,10 +99,10 @@ public class NowPlayingTrailersorVideos extends Fragment {
     }
 
     public static NowPlayingTrailersorVideos getInstance(int movieId) {
-        if (mNowPlayingTrailersorVideos == null) {
-            mNowPlayingTrailersorVideos = new NowPlayingTrailersorVideos(movieId);
-            return mNowPlayingTrailersorVideos;
-        }
+        //if (mNowPlayingTrailersorVideos == null) {
+        mNowPlayingTrailersorVideos = new NowPlayingTrailersorVideos(movieId);
         return mNowPlayingTrailersorVideos;
+        //}
+        //return mNowPlayingTrailersorVideos;
     }
 }

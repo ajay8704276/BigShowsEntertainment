@@ -34,10 +34,10 @@ public class NowPlayingCredits extends Fragment {
     private int movieId;
     private RecyclerView mNowPlayingCastRV;
     private RecyclerView mNowPlayingCrewRV;
+    private View view;
 
 
-
-    private NowPlayingCredits(int movieId){
+    private NowPlayingCredits(int movieId) {
         this.movieId = movieId;
     }
 
@@ -49,23 +49,23 @@ public class NowPlayingCredits extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View view = inflater.inflate(R.layout.now_playing_credits,container,false);
 
-        initViews( view);
-
-
-
+        if (view == null) {
+            view = inflater.inflate(R.layout.now_playing_credits, container, false);
+            initViews(view);
+            return view;
+        }
         return view;
     }
 
     private void initViews(View view) {
 
         mNowPlayingCastRV = (RecyclerView) view.findViewById(R.id.now_playing_cast_rv);
-        mNowPlayingCastRV.setLayoutManager(new LinearLayoutManager(getContext()));
+        mNowPlayingCastRV.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         mNowPlayingCastRV.hasFixedSize();
 
         mNowPlayingCrewRV = (RecyclerView) view.findViewById(R.id.now_playing_crew_rv);
-        mNowPlayingCrewRV.setLayoutManager(new LinearLayoutManager(getContext()));
+        mNowPlayingCrewRV.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         mNowPlayingCrewRV.hasFixedSize();
 
 
@@ -81,20 +81,20 @@ public class NowPlayingCredits extends Fragment {
             @Override
             public void onResponse(Call<NowPlayingCreditsModel> call, Response<NowPlayingCreditsModel> response) {
 
-                if(response.isSuccessful()){
-                    if(response.body()!=null){
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
 
                         final List<NowPlayingCreditsModel.Cast> cast = response.body().getCast();
-                        NowPlayingCreditsCastAdapter mCastAdapter = new NowPlayingCreditsCastAdapter(cast,getContext());
+                        NowPlayingCreditsCastAdapter mCastAdapter = new NowPlayingCreditsCastAdapter(cast, getContext());
                         mNowPlayingCastRV.setAdapter(mCastAdapter);
 
                         final List<NowPlayingCreditsModel.Crew> crew = response.body().getCrew();
-                        NowPlayingCreditsCrewAdapter mCrewAdapter = new NowPlayingCreditsCrewAdapter(crew,getContext());
+                        NowPlayingCreditsCrewAdapter mCrewAdapter = new NowPlayingCreditsCrewAdapter(crew, getContext());
                         mNowPlayingCrewRV.setAdapter(mCrewAdapter);
 
                     }
-                }else{
-                    Toast.makeText(getContext(),response.message().toString(),Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getContext(), response.message().toString(), Toast.LENGTH_LONG).show();
                 }
 
 
@@ -103,7 +103,7 @@ public class NowPlayingCredits extends Fragment {
             @Override
             public void onFailure(Call<NowPlayingCreditsModel> call, Throwable t) {
 
-                Toast.makeText(getContext(),t.getMessage().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), t.getMessage().toString(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -115,13 +115,13 @@ public class NowPlayingCredits extends Fragment {
     }
 
 
-    public static NowPlayingCredits getInstance(int movieId){
+    public static NowPlayingCredits getInstance(int movieId) {
 
-        if(mNowPlayingCredits == null){
-            mNowPlayingCredits = new NowPlayingCredits(movieId);
-            return mNowPlayingCredits;
-        }
+        // if(mNowPlayingCredits == null){
+        mNowPlayingCredits = new NowPlayingCredits(movieId);
         return mNowPlayingCredits;
+        //}
+        //return mNowPlayingCredits;
     }
 
 }

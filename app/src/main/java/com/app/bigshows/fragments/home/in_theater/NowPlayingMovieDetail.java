@@ -32,6 +32,7 @@ public class NowPlayingMovieDetail extends Fragment {
     private TextView tvMovieTitle;
     private TextView tvGenres;
     private TextView tvDescription;
+    private View view;
 
     private NowPlayingMovieDetail(int movieId) {
 
@@ -51,14 +52,18 @@ public class NowPlayingMovieDetail extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View view = inflater.inflate(R.layout.now_playing_movie_details,container,false);
 
-        tvMovieTitle = (TextView) view.findViewById(R.id.tv_title);
-        tvGenres = (TextView) view.findViewById(R.id.tv_genres);
-        tvDescription = (TextView) view.findViewById(R.id.tv_description);
+        if (view == null) {
+            view = inflater.inflate(R.layout.now_playing_movie_details, container, false);
 
-        //create server request
-        startServerRequest(view);
+            tvMovieTitle = (TextView) view.findViewById(R.id.tv_title);
+            tvGenres = (TextView) view.findViewById(R.id.tv_genres);
+            tvDescription = (TextView) view.findViewById(R.id.tv_description);
+
+            //create server request
+            startServerRequest(view);
+            return view;
+        }
         return view;
     }
 
@@ -69,17 +74,17 @@ public class NowPlayingMovieDetail extends Fragment {
         mNowPlayingMovieDetailsCall.enqueue(new Callback<NowPlayingMovieDetails>() {
             @Override
             public void onResponse(Call<NowPlayingMovieDetails> call, Response<NowPlayingMovieDetails> response) {
-                if(response.isSuccessful()){
-                    if(response.body()!=null){
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
 
 
                         //Getting list of genre
                         StringBuilder stringBuilder = new StringBuilder();
                         List<NowPlayingMovieDetails.Genre> genre = response.body().getGenres();
-                        if(genre!=null){
-                            for(int i=0 ; i<genre.size() ;i++){
+                        if (genre != null) {
+                            for (int i = 0; i < genre.size(); i++) {
                                 stringBuilder.append(genre.get(i).getName());
-                                if(i!= genre.size()){
+                                if (i != genre.size()) {
                                     stringBuilder.append(",");
                                 }
                             }
@@ -91,25 +96,25 @@ public class NowPlayingMovieDetail extends Fragment {
                         tvDescription.setText(response.body().getOverview());
 
                     }
-                }else {
-                    Toast.makeText(getContext(),response.message(),Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getContext(), response.message(), Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<NowPlayingMovieDetails> call, Throwable t) {
 
-                Toast.makeText(getContext(),t.getMessage().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), t.getMessage().toString(), Toast.LENGTH_LONG).show();
             }
         });
     }
 
     public static NowPlayingMovieDetail getInstance(int movieId) {
 
-        if (mNowPlayingMovieDetail == null) {
-            mNowPlayingMovieDetail = new NowPlayingMovieDetail(movieId);
-            return mNowPlayingMovieDetail;
-        }
+        // if (mNowPlayingMovieDetail == null) {
+        mNowPlayingMovieDetail = new NowPlayingMovieDetail(movieId);
         return mNowPlayingMovieDetail;
+        /*}
+        return mNowPlayingMovieDetail;*/
     }
 }

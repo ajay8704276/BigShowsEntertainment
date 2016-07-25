@@ -4,66 +4,56 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@drawable/border"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="32dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/border"
+            android:text="Cast Members"
+            android:textAlignment="center"
+            android:textAppearance="@android:style/Theme.Holo.Light.Panel"
+            android:textSize="16sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                android:background="@drawable/border"
-                android:orientation="vertical">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/now_playing_cast_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/border"
-                    android:text="Cast Members"
-                    android:textAlignment="center"
-                    android:textAppearance="@android:style/Theme.Holo.Light.Panel"
-                    android:textSize="16sp" />
+    <include
+        layout="@layout/item_divider"
+        android:layout_width="match_parent"
+        android:layout_height="4dp" />
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/now_playing_cast_rv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@drawable/border"
+        android:orientation="vertical">
 
-            <include
-                layout="@layout/item_divider"
-                android:layout_width="match_parent"
-                android:layout_height="4dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/border"
+            android:text="Crew Members"
+            android:textAlignment="center"
+            android:textAppearance="@android:style/Theme.Holo.Light.Panel"
+            android:textSize="16sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                android:background="@drawable/border"
-                android:orientation="vertical">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/now_playing_crew_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="32dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/border"
-                    android:text="Crew Members"
-                    android:textAlignment="center"
-                    android:textAppearance="@android:style/Theme.Holo.Light.Panel"
-                    android:textSize="16sp" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/now_playing_crew_rv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </LinearLayout>
-
-    </ScrollView>
 </LinearLayout>
