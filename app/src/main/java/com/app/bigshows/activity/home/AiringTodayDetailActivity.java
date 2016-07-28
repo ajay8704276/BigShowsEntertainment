@@ -26,7 +26,6 @@ import com.app.bigshows.utils.Constants;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,15 +48,11 @@ public class AiringTodayDetailActivity extends AppCompatActivity {
     private InterstitialAd mInterstitialAd;
 
     private RecyclerView mSearchRecyclerView;
-    private MaterialSearchView materialSearchView;
 
     @Override
     public void onBackPressed() {
-        if(materialSearchView.isSearchOpen()){
-            materialSearchView.closeSearch();
-        }else {
+
             super.onBackPressed();
-        }
     }
 
     @Override
@@ -73,7 +68,6 @@ public class AiringTodayDetailActivity extends AppCompatActivity {
 
        /* mSearchRecyclerView = (RecyclerView) findViewById(R.id.search_rv);
         mSearchRecyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));*/
-        materialSearchView = (MaterialSearchView) findViewById(R.id.material_search_view);
        // materialSearchView.addView(mSearchRecyclerView);
 
 
@@ -81,7 +75,7 @@ public class AiringTodayDetailActivity extends AppCompatActivity {
 
 
         //Loading Interstitial Ad
-        mInterstitialAd = new InterstitialAd(this);
+       /* mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId(getString(R.string.interstitials_home));
         AdRequest mInterstitialsAdRequest = new AdRequest.Builder().build();
         mInterstitialAd.loadAd(mInterstitialsAdRequest);
@@ -111,7 +105,7 @@ public class AiringTodayDetailActivity extends AppCompatActivity {
                 showInterstitials();
 
             }
-        });
+        });*/
 
 
         airingTodayDetailToolbar = (Toolbar) findViewById(R.id.home_airing_today_detail_toolbar);
@@ -147,7 +141,7 @@ public class AiringTodayDetailActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.movies_menu, menu);
 
         MenuItem item = menu.findItem(R.id.action_search);
-        materialSearchView.setMenuItem(item);
+       /* materialSearchView.setMenuItem(item);
         materialSearchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -167,9 +161,9 @@ public class AiringTodayDetailActivity extends AppCompatActivity {
                             final List<SearchWrapper> mSearchWrappers = response.body().getResults();
                             final ArrayList<String> mSearchResultString = new ArrayList<String>();
 
-                           /* for (int i = 0; i < mSearchWrappers.size(); i++) {
+                           *//* for (int i = 0; i < mSearchWrappers.size(); i++) {
                                 mSearchResultString.add(mSearchWrappers.get(i).getName());
-                            }*/
+                            }*//*
 
                             SearchAdapter mSearchAdapter = new SearchAdapter(mSearchWrappers, R.layout.search_card_view, getApplicationContext());
                             if (mSearchAdapter != null) {
@@ -190,7 +184,7 @@ public class AiringTodayDetailActivity extends AppCompatActivity {
                 }
                 return true;
             }
-        });
+        });*/
         /*final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
         SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));*/

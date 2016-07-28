@@ -8,8 +8,6 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -20,12 +18,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.app.bigshows.BigShowsEntertainmentApp;
 import com.app.bigshows.R;
@@ -38,25 +32,11 @@ import com.app.bigshows.adapters.homepage.BigshowsHomepageAdapter;
 import com.app.bigshows.fragments.home.airing_today.Home_AiringToday;
 import com.app.bigshows.fragments.home.in_theater.Home_InTheater;
 import com.app.bigshows.fragments.home.menu.Home_Menu;
-import com.app.bigshows.fragments.home.new_trailers.Home_NewTrailers;
-import com.app.bigshows.model.Login.UserProfileDetail;
-import com.app.bigshows.model.search.Search;
-import com.app.bigshows.model.search.SearchWrapper;
-import com.app.bigshows.rest.ApiClient;
-import com.app.bigshows.rest.search.SearchApiInterface;
-import com.app.bigshows.tracker.BigShowsAppTracker;
+import com.app.bigshows.fragments.home.upcoming.HomeUpcoming;
 import com.app.bigshows.utils.Constants;
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class BigShowsHomeActivity extends AppCompatActivity implements View.OnClickListener,MaterialSearchView.OnQueryTextListener,MaterialSearchView.SearchViewListener {
+public class BigShowsHomeActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private ImageView mProfileImageView;
@@ -290,7 +270,7 @@ public class BigShowsHomeActivity extends AppCompatActivity implements View.OnCl
         BigshowsHomepageAdapter mBigshowsHomepageAdapter = new BigshowsHomepageAdapter(getSupportFragmentManager());
         mBigshowsHomepageAdapter.addFragment(new Home_AiringToday(), "AIRING");
         mBigshowsHomepageAdapter.addFragment(Home_InTheater.newInstance(), "IN THEATER");
-        mBigshowsHomepageAdapter.addFragment(new Home_NewTrailers(), "TRAILERS");
+        mBigshowsHomepageAdapter.addFragment(new HomeUpcoming(), "UPCOMING");
         mBigshowsHomepageAdapter.addFragment(new Home_Menu(), "MENU");
 
         homeViewPager.setAdapter(mBigshowsHomepageAdapter);
@@ -313,26 +293,4 @@ public class BigShowsHomeActivity extends AppCompatActivity implements View.OnCl
         super.onDestroy();
     }
 
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-
-        //create request from here
-
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        return false;
-    }
-
-    @Override
-    public void onSearchViewShown() {
-
-    }
-
-    @Override
-    public void onSearchViewClosed() {
-
-    }
 }

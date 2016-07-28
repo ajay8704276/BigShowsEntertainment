@@ -67,9 +67,8 @@ dependencies {
     compile 'com.google.android.gms:play-services-ads:9.0.0'
     compile 'com.google.android.gms:play-services-analytics:9.0.0'
 
-    //persistence search view library
-    compile 'com.miguelcatalan:materialsearchview:1.4.0'
+    //firebase auth
+    compile 'com.google.firebase:firebase-auth:9.0.0'
 
-    compile 'com.github.lawloretienne:quickreturn:0.0.3'
 }
 apply plugin: 'com.google.gms.google-services'
