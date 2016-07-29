@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -21,7 +22,7 @@ import java.util.List;
  * Created by Ajay Kumar on 7/26/2016.
  */
 
-public class UpcomingMoviesAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class UpcomingMoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static final int ITEM = 0;
     public static final int LOADING = 1;
@@ -38,12 +39,12 @@ public class UpcomingMoviesAdapter  extends RecyclerView.Adapter<RecyclerView.Vi
 
         RecyclerView.ViewHolder viewHolder = null;
 
-        switch (viewType){
+        switch (viewType) {
 
-            case ITEM :
+            case ITEM:
                 viewHolder = createUpcomingMoviesViewHolder(parent);
                 break;
-            case LOADING :
+            case LOADING:
                 viewHolder = createLoadingViewHolder(parent);
                 break;
         }
@@ -80,19 +81,19 @@ public class UpcomingMoviesAdapter  extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        switch (getItemViewType(position)){
+        switch (getItemViewType(position)) {
             case ITEM:
-                bindUpcomingMoviesViewHolder(holder,position);
+                bindUpcomingMoviesViewHolder(holder, position);
                 break;
             case LOADING:
-                bindLoadingViewHolder(holder,position);
+                bindLoadingViewHolder(holder, position);
                 break;
         }
     }
 
     @Override
     public int getItemViewType(int position) {
-        return (position == mUpcomingMoviesResults.size()-1 && mIsLoadingFooterAdded) ? LOADING : ITEM;
+        return (position == mUpcomingMoviesResults.size() - 1 && mIsLoadingFooterAdded) ? LOADING : ITEM;
     }
 
     private void bindLoadingViewHolder(RecyclerView.ViewHolder holder, int position) {
@@ -105,10 +106,10 @@ public class UpcomingMoviesAdapter  extends RecyclerView.Adapter<RecyclerView.Vi
 
         final UpcomingMoviesViewHolder upcomingMoviesViewHolder = (UpcomingMoviesViewHolder) holder;
         ((UpcomingMoviesViewHolder) holder).mUpcomingMovieTitle.setText(mUpcomingMoviesResults.get(position).getTitle());
-        ((UpcomingMoviesViewHolder) holder).mUpcomingMovieRating.setText(mUpcomingMoviesResults.get(position).getVoteAverage());
+        ((UpcomingMoviesViewHolder) holder).mUpcomingMovieRating.setText(mUpcomingMoviesResults.get(position).getVoteAverage().toString());
         ((UpcomingMoviesViewHolder) holder).mUpcomingMovieSummary.setText(mUpcomingMoviesResults.get(position).getOverview());
         ((UpcomingMoviesViewHolder) holder).mUpcomingMovieReleaseDate.setText(mUpcomingMoviesResults.get(position).getReleaseDate());
-         imageLoader.displayImage(Constants.IMAGE_PATH+mUpcomingMoviesResults.get(position).getPosterPath(),((UpcomingMoviesViewHolder) holder).mPosterIV,options);
+        imageLoader.displayImage(Constants.IMAGE_PATH + mUpcomingMoviesResults.get(position).getPosterPath(), ((UpcomingMoviesViewHolder) holder).mPosterIV, options);
     }
 
     @Override
@@ -118,7 +119,7 @@ public class UpcomingMoviesAdapter  extends RecyclerView.Adapter<RecyclerView.Vi
 
 
     //create view holder for two different item
-    public static class UpcomingMoviesViewHolder extends RecyclerView.ViewHolder{
+    public static class UpcomingMoviesViewHolder extends RecyclerView.ViewHolder {
 
 
         ImageView mPosterIV;
@@ -140,30 +141,26 @@ public class UpcomingMoviesAdapter  extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
 
-    public static class UpcomingMoviesLoadingViewHolder extends RecyclerView.ViewHolder{
-
+    public static class UpcomingMoviesLoadingViewHolder extends RecyclerView.ViewHolder {
 
         ProgressBar mLoadMoreProgressbar;
 
         public UpcomingMoviesLoadingViewHolder(View itemView) {
             super(itemView);
-
             mLoadMoreProgressbar = (ProgressBar) itemView.findViewById(R.id.loading_iv);
         }
     }
-
-
 
 
     //Helper method for updating adapter
     // region Helper Methods
     private void add(UpcomingMovies.Result item) {
         mUpcomingMoviesResults.add(item);
-        notifyItemInserted(mUpcomingMoviesResults.size()-1);
+        notifyItemInserted(mUpcomingMoviesResults.size() - 1);
     }
 
     public void addAll(List<UpcomingMovies.Result> results) {
-        for (UpcomingMovies.Result result : results){
+        for (UpcomingMovies.Result result : results) {
             add(result);
         }
     }
@@ -187,7 +184,7 @@ public class UpcomingMoviesAdapter  extends RecyclerView.Adapter<RecyclerView.Vi
         return getItemCount() == 0;
     }
 
-    public void addLoading(){
+    public void addLoading() {
         mIsLoadingFooterAdded = true;
         add(new UpcomingMovies.Result());
     }
@@ -209,7 +206,7 @@ public class UpcomingMoviesAdapter  extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
 
-    public UpcomingMoviesAdapter(){
+    public UpcomingMoviesAdapter() {
 
         mUpcomingMoviesResults = new ArrayList<>();
     }

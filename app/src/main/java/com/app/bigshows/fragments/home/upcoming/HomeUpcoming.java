@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.app.bigshows.BigShowsEntertainmentApp;
 import com.app.bigshows.R;
@@ -32,7 +33,7 @@ import retrofit2.Response;
 
 public class HomeUpcoming extends Fragment {
 
-    public static final int PAGE_SIZE = 137;
+    public static final int PAGE_SIZE = 6;
     private boolean mIsLastPage = false;
     private int mCurrentPage = 1;
     private boolean mIsLoading = false;
@@ -141,6 +142,7 @@ public class HomeUpcoming extends Fragment {
             if(response!= null){
                 if(response.isSuccessful()){
                     UpcomingMovies upcomingMovies = response.body();
+                    Toast.makeText(getContext(),response.body().toString(),Toast.LENGTH_LONG).show();
                     if(upcomingMovies!=null){
                         List<UpcomingMovies.Result> results = upcomingMovies.getResults();
                         if(results!=null){
@@ -159,6 +161,8 @@ public class HomeUpcoming extends Fragment {
 
         @Override
         public void onFailure(Call<UpcomingMovies> call, Throwable t) {
+
+            Toast.makeText(getContext(),t.getMessage().toString(),Toast.LENGTH_LONG).show();
 
         }
     };

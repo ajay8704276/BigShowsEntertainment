@@ -183,7 +183,7 @@ public class UpcomingMovies {
         private Boolean video;
         @SerializedName("vote_average")
         @Expose
-        private Integer voteAverage;
+        private Double voteAverage;
         @SerializedName("vote_count")
         @Expose
         private Integer voteCount;
@@ -212,7 +212,7 @@ public class UpcomingMovies {
          * @param video
          * @param popularity
          */
-        public Result(Boolean adult, String backdropPath, List<Integer> genreIds, Integer id, String originalLanguage, String originalTitle, String overview, String releaseDate, String posterPath, Double popularity, String title, Boolean video, Integer voteAverage, Integer voteCount) {
+        public Result(Boolean adult, String backdropPath, List<Integer> genreIds, Integer id, String originalLanguage, String originalTitle, String overview, String releaseDate, String posterPath, Double popularity, String title, Boolean video, Double voteAverage, Integer voteCount) {
             this.adult = adult;
             this.backdropPath = backdropPath;
             this.genreIds = genreIds;
@@ -450,7 +450,7 @@ public class UpcomingMovies {
          * @return
          * The voteAverage
          */
-        public Integer getVoteAverage() {
+        public Double getVoteAverage() {
             return voteAverage;
         }
 
@@ -459,7 +459,7 @@ public class UpcomingMovies {
          * @param voteAverage
          * The vote_average
          */
-        public void setVoteAverage(Integer voteAverage) {
+        public void setVoteAverage(Double voteAverage) {
             this.voteAverage = voteAverage;
         }
 

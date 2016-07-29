@@ -12,6 +12,6 @@ import retrofit2.http.Query;
 
 public interface UpcomingMoviesInterface {
 
-    @GET("/movie/upcoming")
+    @GET("movie/upcoming")
     Call<UpcomingMovies> getUpcomingMovies(@Query("api_key") String apikey,@Query("page") int cuurentPage);
 }
