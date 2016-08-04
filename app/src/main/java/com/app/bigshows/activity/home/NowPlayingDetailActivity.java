@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.ImageView;
 
 import com.app.bigshows.R;
 import com.app.bigshows.adapters.homepage.intheater.NowPlayingAdapter;
@@ -14,6 +15,9 @@ import com.app.bigshows.adapters.homepage.intheater.NowPlayingDetailactivityAdap
 import com.app.bigshows.fragments.home.in_theater.NowPlayingCredits;
 import com.app.bigshows.fragments.home.in_theater.NowPlayingMovieDetail;
 import com.app.bigshows.fragments.home.in_theater.NowPlayingTrailersorVideos;
+import com.app.bigshows.utils.Constants;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * Created by Ajay Kumar on 7/22/2016.
@@ -25,6 +29,11 @@ public class NowPlayingDetailActivity extends AppCompatActivity {
     private ViewPager nowPlayingDetailViewPager;
     private TabLayout nowPlayingDetailTabLayout;
     private int movieId;
+    private String mPosterPath;
+    private String mMovieTitle;
+    private ImageView mPosterIV;
+    ImageLoader imageLoader;
+    DisplayImageOptions options;
 
 
     @Override
@@ -34,9 +43,26 @@ public class NowPlayingDetailActivity extends AppCompatActivity {
 
         if (getIntent().getExtras()!=null){
             movieId = getIntent().getExtras().getInt(NowPlayingAdapter.MOVIEID);
+            mPosterPath = getIntent().getExtras().getString(NowPlayingAdapter.POSTER_PATH);
+            mMovieTitle = getIntent().getExtras().getString(NowPlayingAdapter.MOVIE_TITLE);
         }
 
+        //getting image loaded in image view
+        imageLoader = ImageLoader.getInstance();
+        options = new DisplayImageOptions.Builder().cacheInMemory(true)
+                .cacheOnDisc(true).resetViewBeforeLoading(true)
+                .showImageOnLoading(R.drawable.image_progress_anim)
+                .showImageForEmptyUri(R.drawable.broken_image)
+                .showImageOnFail(R.drawable.broken_image)
+                .build();
+        mPosterIV = (ImageView) findViewById(R.id.home_nowplaying_detailIV);
+        imageLoader.displayImage(Constants.IMAGE_PATH +mPosterPath,mPosterIV,options);
+
+
+
+        // Displaying title in toolbar
         nowPlayingDetailToolbar = (Toolbar) findViewById(R.id.home_nowplaying_detail_toolbar);
+        nowPlayingDetailToolbar.setTitle(mMovieTitle);
         setSupportActionBar(nowPlayingDetailToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

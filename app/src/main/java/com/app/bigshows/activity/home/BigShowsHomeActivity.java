@@ -262,7 +262,6 @@ public class BigShowsHomeActivity extends AppCompatActivity implements View.OnCl
         homeTabLayout.getTabAt(0).setIcon(android.R.drawable.ic_dialog_email);
         homeTabLayout.getTabAt(1).setIcon(android.R.drawable.ic_dialog_dialer);
         homeTabLayout.getTabAt(2).setIcon(android.R.drawable.ic_dialog_info);
-        homeTabLayout.getTabAt(3).setIcon(android.R.drawable.ic_dialog_map);
     }
 
     private void setupViewPager(ViewPager homeViewPager) {
@@ -271,7 +270,6 @@ public class BigShowsHomeActivity extends AppCompatActivity implements View.OnCl
         mBigshowsHomepageAdapter.addFragment(new Home_AiringToday(), "AIRING");
         mBigshowsHomepageAdapter.addFragment(Home_InTheater.newInstance(), "IN THEATER");
         mBigshowsHomepageAdapter.addFragment(new HomeUpcoming(), "UPCOMING");
-        mBigshowsHomepageAdapter.addFragment(new Home_Menu(), "MENU");
 
         homeViewPager.setAdapter(mBigshowsHomepageAdapter);
     }

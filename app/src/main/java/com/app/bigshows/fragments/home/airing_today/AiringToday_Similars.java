@@ -43,7 +43,7 @@ public class AiringToday_Similars  extends Fragment{
     private AiringTodayTVShowsSimilar_TVShows_ResultWrapper airingTodayTVShowsSimilar_tvShows_resultWrapper;
     private AirinTodayTVShowsSimilar_TVVideos_ResultWrapper airinTodayTVShowsSimilar_tvVideos_resultWrapper;
 
-    private int tvShowID;
+    private static int tvShowID;
 
     private View view;
 
@@ -52,9 +52,8 @@ public class AiringToday_Similars  extends Fragment{
 
     //Empty constructor required
 
-    public AiringToday_Similars( int tvShowID){
+    public AiringToday_Similars(){
 
-        this.tvShowID = tvShowID;
     }
 
 
@@ -161,5 +160,12 @@ public class AiringToday_Similars  extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    public  static AiringToday_Similars getInstance(int mTVShowID){
+
+        AiringToday_Similars mAiringTodaySimilars = new AiringToday_Similars();
+        tvShowID = mTVShowID;
+        return mAiringTodaySimilars;
     }
 }

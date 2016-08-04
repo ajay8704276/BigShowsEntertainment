@@ -10,10 +10,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.app.bigshows.BigShowsEntertainmentApp;
 import com.app.bigshows.R;
 import com.app.bigshows.adapters.homepage.ontheair.AiringTodayDetailActivityAdapter;
+import com.app.bigshows.adapters.homepage.ontheair.OnTheAirResultAdapter;
 import com.app.bigshows.adapters.search.SearchAdapter;
 import com.app.bigshows.fragments.home.airing_today.AiringToday_Credits;
 import com.app.bigshows.fragments.home.airing_today.AiringToday_Details;
@@ -23,9 +25,12 @@ import com.app.bigshows.model.search.SearchWrapper;
 import com.app.bigshows.rest.ApiClient;
 import com.app.bigshows.rest.search.SearchApiInterface;
 import com.app.bigshows.utils.Constants;
+import com.app.bigshows.utils.ViewPagerAdapter;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,9 +50,18 @@ public class AiringTodayDetailActivity extends AppCompatActivity {
     private TabLayout airingTodayDetailTabLayout;
     private ViewPager airingTodayDetailViewPager;
     private int tvShowID;
+    private String posterPath;
+    private Toolbar mToolbar;
+    private String mTVShowTitle;
     private InterstitialAd mInterstitialAd;
 
     private RecyclerView mSearchRecyclerView;
+
+    /*private ViewPager mPosterImageViewPager;
+    private ViewPagerAdapter mPosterViewPagerAdapter;*/
+    private ImageView mPosterIV;
+    ImageLoader imageLoader;
+    DisplayImageOptions options;
 
     @Override
     public void onBackPressed() {
@@ -61,10 +75,32 @@ public class AiringTodayDetailActivity extends AppCompatActivity {
 
         if(getIntent().getExtras()!=null){
             tvShowID = getIntent().getExtras().getInt("TV_SHOW_ID");
+            posterPath = getIntent().getExtras().getString(OnTheAirResultAdapter.TV_SHOW_POSTER_PATH);
+            mTVShowTitle = getIntent().getExtras().getString(OnTheAirResultAdapter.TV_SHOW_TITLE);
         }
         setContentView(R.layout.home_airing_today_details);
 
+        mToolbar = (Toolbar) findViewById(R.id.home_airing_today_detail_toolbar);
+        mToolbar.setTitle(mTVShowTitle);
 
+        mPosterIV = (ImageView) findViewById(R.id.home_airing_today_IV);
+        imageLoader = ImageLoader.getInstance();
+        options = new DisplayImageOptions.Builder().cacheInMemory(true)
+                .cacheOnDisc(true).resetViewBeforeLoading(true)
+                .showImageOnLoading(R.drawable.image_progress_anim)
+                .showImageForEmptyUri(R.drawable.broken_image)
+                .showImageOnFail(R.drawable.broken_image)
+                .build();
+
+
+        mPosterIV = (ImageView) findViewById(R.id.home_airing_today_IV);
+        imageLoader.displayImage(Constants.IMAGE_PATH +posterPath,mPosterIV,options);
+
+
+       /* mPosterImageViewPager = (ViewPager) findViewById(R.id.home_airing_today_viewpager);
+        mPosterViewPagerAdapter = new ViewPagerAdapter(this,posterPath);
+        mPosterImageViewPager.setAdapter(mPosterViewPagerAdapter);
+*/
 
        /* mSearchRecyclerView = (RecyclerView) findViewById(R.id.search_rv);
         mSearchRecyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));*/
@@ -141,103 +177,6 @@ public class AiringTodayDetailActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.movies_menu, menu);
 
         MenuItem item = menu.findItem(R.id.action_search);
-       /* materialSearchView.setMenuItem(item);
-        materialSearchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                if(newText!=null && newText.length()>0) {
-                    //Create request
-                    SearchApiInterface mSearchApiInterface = ApiClient.getRetrofitInstance().create(SearchApiInterface.class);
-                    Call<Search> mCallSearch = mSearchApiInterface.getSearchResults(Constants.API_KEY, newText);
-                    mCallSearch.enqueue(new Callback<Search>() {
-                        @Override
-                        public void onResponse(Call<Search> call, Response<Search> response) {
-
-                            final List<SearchWrapper> mSearchWrappers = response.body().getResults();
-                            final ArrayList<String> mSearchResultString = new ArrayList<String>();
-
-                           *//* for (int i = 0; i < mSearchWrappers.size(); i++) {
-                                mSearchResultString.add(mSearchWrappers.get(i).getName());
-                            }*//*
-
-                            SearchAdapter mSearchAdapter = new SearchAdapter(mSearchWrappers, R.layout.search_card_view, getApplicationContext());
-                            if (mSearchAdapter != null) {
-                                // mSearchAdapter.notify();
-                                mSearchRecyclerView.setVisibility(View.VISIBLE);
-                            }
-                            mSearchRecyclerView.setAdapter(mSearchAdapter);
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<Search> call, Throwable t) {
-
-                        }
-                    });
-                }else {
-                    mSearchRecyclerView.setVisibility(View.GONE);
-                }
-                return true;
-            }
-        });*/
-        /*final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
-        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));*/
-/*
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-
-
-                if(newText!=null && newText.length()>0) {
-                    //Create request
-                    SearchApiInterface mSearchApiInterface = ApiClient.getRetrofitInstance().create(SearchApiInterface.class);
-                    Call<Search> mCallSearch = mSearchApiInterface.getSearchResults(Constants.API_KEY, newText);
-                    mCallSearch.enqueue(new Callback<Search>() {
-                        @Override
-                        public void onResponse(Call<Search> call, Response<Search> response) {
-
-                            final List<SearchWrapper> mSearchWrappers = response.body().getResults();
-                            final ArrayList<String> mSearchResultString = new ArrayList<String>();
-
-                           */
-/* for (int i = 0; i < mSearchWrappers.size(); i++) {
-                                mSearchResultString.add(mSearchWrappers.get(i).getName());
-                            }*//*
-
-
-                            SearchAdapter mSearchAdapter = new SearchAdapter(mSearchWrappers, R.layout.search_card_view, getApplicationContext());
-                            if (mSearchAdapter != null) {
-                               // mSearchAdapter.notify();
-                                mSearchRecyclerView.setVisibility(View.VISIBLE);
-                            }
-                            mSearchRecyclerView.setAdapter(mSearchAdapter);
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<Search> call, Throwable t) {
-
-                        }
-                    });
-                }else {
-                    mSearchRecyclerView.setVisibility(View.GONE);
-                }
-                return true;
-            }
-        });
-*/
         return true;
     }
 
@@ -251,10 +190,10 @@ public class AiringTodayDetailActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager airingTodayDetailViewPager) {
 
         AiringTodayDetailActivityAdapter mAiringTodayDetailActivityAdapter = new AiringTodayDetailActivityAdapter(getSupportFragmentManager());
-        mAiringTodayDetailActivityAdapter.addFragment(new AiringToday_Details(tvShowID),"DETAILS");
-        mAiringTodayDetailActivityAdapter.addFragment(new AiringToday_Credits(tvShowID),"CREDITS");
-        mAiringTodayDetailActivityAdapter.addFragment(new AiringToday_Similars(tvShowID),"SIMILAR");
-
+        mAiringTodayDetailActivityAdapter.addFragment(AiringToday_Details.getInstance(tvShowID),"DETAILS");
+        mAiringTodayDetailActivityAdapter.addFragment(AiringToday_Credits.getInstance(tvShowID),"CREDITS");
+        mAiringTodayDetailActivityAdapter.addFragment(AiringToday_Similars.getInstance(tvShowID),"SIMILAR");
         airingTodayDetailViewPager.setAdapter(mAiringTodayDetailActivityAdapter);
     }
+
 }

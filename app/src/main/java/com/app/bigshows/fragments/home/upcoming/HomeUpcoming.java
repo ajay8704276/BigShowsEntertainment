@@ -142,7 +142,6 @@ public class HomeUpcoming extends Fragment {
             if(response!= null){
                 if(response.isSuccessful()){
                     UpcomingMovies upcomingMovies = response.body();
-                    Toast.makeText(getContext(),response.body().toString(),Toast.LENGTH_LONG).show();
                     if(upcomingMovies!=null){
                         List<UpcomingMovies.Result> results = upcomingMovies.getResults();
                         if(results!=null){
@@ -162,7 +161,7 @@ public class HomeUpcoming extends Fragment {
         @Override
         public void onFailure(Call<UpcomingMovies> call, Throwable t) {
 
-            Toast.makeText(getContext(),t.getMessage().toString(),Toast.LENGTH_LONG).show();
+            //Toast.makeText(getContext(),t.getMessage().toString(),Toast.LENGTH_LONG).show();
 
         }
     };

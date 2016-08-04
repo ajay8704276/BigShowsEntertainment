@@ -28,15 +28,14 @@ import retrofit2.Response;
 public class NowPlayingMovieDetail extends Fragment {
 
     private static NowPlayingMovieDetail mNowPlayingMovieDetail;
-    private int movieId;
+    private static int movieID;
     private TextView tvMovieTitle;
     private TextView tvGenres;
     private TextView tvDescription;
     private View view;
 
-    private NowPlayingMovieDetail(int movieId) {
+    public NowPlayingMovieDetail() {
 
-        this.movieId = movieId;
     }
 
     @Override
@@ -70,7 +69,7 @@ public class NowPlayingMovieDetail extends Fragment {
     private void startServerRequest(View view) {
 
         NowPlayingApiInterface mNowPlayingApiInterface = ApiClient.getRetrofitInstance().create(NowPlayingApiInterface.class);
-        Call<NowPlayingMovieDetails> mNowPlayingMovieDetailsCall = mNowPlayingApiInterface.getNowPlayingMovieDetail(movieId, Constants.API_KEY);
+        Call<NowPlayingMovieDetails> mNowPlayingMovieDetailsCall = mNowPlayingApiInterface.getNowPlayingMovieDetail(movieID, Constants.API_KEY);
         mNowPlayingMovieDetailsCall.enqueue(new Callback<NowPlayingMovieDetails>() {
             @Override
             public void onResponse(Call<NowPlayingMovieDetails> call, Response<NowPlayingMovieDetails> response) {
@@ -104,17 +103,18 @@ public class NowPlayingMovieDetail extends Fragment {
             @Override
             public void onFailure(Call<NowPlayingMovieDetails> call, Throwable t) {
 
-                Toast.makeText(getContext(), t.getMessage().toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(), t.getMessage().toString(), Toast.LENGTH_LONG).show();
             }
         });
     }
 
     public static NowPlayingMovieDetail getInstance(int movieId) {
 
-        // if (mNowPlayingMovieDetail == null) {
-        mNowPlayingMovieDetail = new NowPlayingMovieDetail(movieId);
+        movieID = movieId;
+        if (mNowPlayingMovieDetail == null) {
+            mNowPlayingMovieDetail = new NowPlayingMovieDetail();
+            return mNowPlayingMovieDetail;
+        }
         return mNowPlayingMovieDetail;
-        /*}
-        return mNowPlayingMovieDetail;*/
     }
 }

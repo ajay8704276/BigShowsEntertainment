@@ -32,6 +32,8 @@ public class UpcomingMoviesAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     public boolean mIsLoadingFooterAdded = false;
 
+
+
     public List<UpcomingMovies.Result> mUpcomingMoviesResults;
 
     @Override

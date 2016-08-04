@@ -25,12 +25,14 @@ import java.util.List;
 
 public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.NowPlayingViewHolder>{
 
+    public static final String MOVIE_TITLE = "MOVIE_TITLE";
     private List<NowPlaying.Result> mResults ;
     private Context mContext;
     private int rowLayout;
     private ImageLoader imageLoader;
     private DisplayImageOptions options;
     public static final String MOVIEID = "MOVIEID";
+    public static final String POSTER_PATH ="POSTER_PATH";
 
     @Override
     public NowPlayingAdapter.NowPlayingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -50,6 +52,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.No
     @Override
     public void onBindViewHolder(NowPlayingAdapter.NowPlayingViewHolder holder, final int position) {
 
+
         imageLoader.displayImage(Constants.IMAGE_PATH+mResults.get(position).getPosterPath(),holder.ivPosterImage,options);
         holder.tvMovieTitle.setText(mResults.get(position).getTitle());
         holder.tvMovieRating.setText(mResults.get(position).getVoteAverage().toString());
@@ -60,6 +63,8 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.No
             public void onClick(View view) {
                 Intent intent = new Intent(mContext,NowPlayingDetailActivity.class);
                 intent.putExtra(MOVIEID,mResults.get(position).getId());
+                intent.putExtra(POSTER_PATH,mResults.get(position).getPosterPath().toString());
+                intent.putExtra(MOVIE_TITLE,mResults.get(position).getOriginalTitle());
                 mContext.startActivity(intent);
             }
         });

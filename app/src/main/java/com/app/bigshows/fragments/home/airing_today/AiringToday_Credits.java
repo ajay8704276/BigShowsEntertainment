@@ -39,16 +39,16 @@ public class AiringToday_Credits extends Fragment {
     private AiringToday_Credits_castAdpater mAiringTodayCreditsCastAdpater;
     private AiringToday_Credits_crewAdapter mAiringTodayCreditsCrewAdapter;
 
-    private int tvShowID;
+    private static int tvShowID;
     private View view;
 
 
     //Empty constructor required
+    public AiringToday_Credits(){
 
-    public AiringToday_Credits(int tvShowID){
-
-        this.tvShowID = tvShowID;
     }
+
+
 
 
     @Nullable
@@ -121,5 +121,13 @@ public class AiringToday_Credits extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    public static AiringToday_Credits getInstance(int mtvShowID){
+
+        AiringToday_Credits mAiringTodayCredits = new AiringToday_Credits();
+        tvShowID = mtvShowID;
+        return mAiringTodayCredits;
+
     }
 }

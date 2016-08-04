@@ -28,14 +28,19 @@ import java.util.List;
 public class OnTheAirResultAdapter extends RecyclerView.Adapter<OnTheAirResultAdapter.OnTheAirViewHolder>{
 
     public static final String TV_SHOW_ID = "TV_SHOW_ID";
+    public static final String TV_SHOW_POSTER_PATH = "POSTER_PATH";
+    public static final String TV_SHOW_TITLE = "TVSHOW_TITLE";
     private List<OnTheAir_Results> mOnTheAir_resultses ;
     private int rowLayout ;
     private Context mContext;
-    public  static int tvShowID;
+    public  int tvShowID;
 
     private Bundle dataBundle ;
     ImageLoader imageLoader;
     DisplayImageOptions options;
+
+    private String posterPath;
+    private String mTVShowTitle;
 
 
     @Override
@@ -56,6 +61,8 @@ public class OnTheAirResultAdapter extends RecyclerView.Adapter<OnTheAirResultAd
     @Override
     public void onBindViewHolder(OnTheAirViewHolder holder, final int position) {
 
+        mTVShowTitle = mOnTheAir_resultses.get(position).getOriginalName();
+        posterPath = mOnTheAir_resultses.get(position).getPosterPath();
         tvShowID = mOnTheAir_resultses.get(position).getId();
         holder.title.setText(mOnTheAir_resultses.get(position).getName());
         holder.airdate.setText(mOnTheAir_resultses.get(position).getFirstAirDate());
@@ -66,6 +73,8 @@ public class OnTheAirResultAdapter extends RecyclerView.Adapter<OnTheAirResultAd
                 BigShowsEntertainmentApp.getSingleInstance().trackEvents("On The Air","Item Clicke",mOnTheAir_resultses.get(position).getName());
                 Intent intent = new Intent(mContext,AiringTodayDetailActivity.class);
                 intent.putExtra(TV_SHOW_ID,tvShowID);
+                intent.putExtra(TV_SHOW_POSTER_PATH,posterPath);
+                intent.putExtra(TV_SHOW_TITLE,mTVShowTitle);
                 view.getContext().startActivity(intent);
             }
         });
@@ -112,7 +121,21 @@ public class OnTheAirResultAdapter extends RecyclerView.Adapter<OnTheAirResultAd
         this.mOnTheAir_resultses = results;
         this.rowLayout = rowLayout;
         this.mContext = mContext;
+        //allPosterPath = getAllPosterPath();
     }
+
+   /* public String[] getAllPosterPath(){
+
+        int totalPosterCount = mOnTheAir_resultses.size();
+        allPosterPath = new String[totalPosterCount];
+        for(int i=0 ;i<mOnTheAir_resultses.size();i++){
+            if(mOnTheAir_resultses.get(i).getPosterPath()!=null){
+                allPosterPath[i] = mOnTheAir_resultses.get(i).getPosterPath();
+            }
+        }
+
+        return allPosterPath;
+    }*/
 
 
 }

@@ -41,7 +41,8 @@ public class AiringToday_Details extends Fragment {
     private TextView mTVShowName;
     private TextView mTVShowYear;
     private TextView mTVShowOverView;
-    private int tvShowID;
+    private static int tvShowID;
+    static AiringToday_Details mAiringTodayDetails;
     private View view;
 
 
@@ -54,9 +55,8 @@ public class AiringToday_Details extends Fragment {
 
     //Empty constructor required
 
-    public AiringToday_Details(int tvShowID){
+    public AiringToday_Details(){
 
-        this.tvShowID = tvShowID;
     }
 
     @Override
@@ -138,5 +138,12 @@ public class AiringToday_Details extends Fragment {
         BigShowsEntertainmentApp.getSingleInstance().trackScreenView(Constants.SCREEN_NAME_AIRING_DETAILS);
     }
 
+    public static AiringToday_Details getInstance(int mTVShowID){
+        tvShowID = mTVShowID;
+        if (mAiringTodayDetails== null){
+            mAiringTodayDetails = new AiringToday_Details();
+        }
+        return mAiringTodayDetails;
+    }
 
 }

@@ -29,16 +29,17 @@ public class PeopleActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.people);
-        mPeople_popularPeople = new People_PopularPeople();
+        //
+        // mPeople_popularPeople = new People_PopularPeople();
 
         peopleToolbar = (Toolbar) findViewById(R.id.people_toolbar);
         setSupportActionBar(peopleToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mFragmentTransaction = getSupportFragmentManager().beginTransaction();
+        /*mFragmentTransaction = getSupportFragmentManager().beginTransaction();
         mFragmentTransaction.replace(R.id.people_container,mPeople_popularPeople);
         mFragmentTransaction.addToBackStack(null);
-        mFragmentTransaction.commit();
+        mFragmentTransaction.commit();*/
 
     }
 
