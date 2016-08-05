@@ -13,6 +13,7 @@ import com.app.bigshows.R;
 import com.app.bigshows.model.home.tvshows.AiringTodayTVShowsCredits_CastWrapper;
 
 import com.app.bigshows.utils.Constants;
+import com.app.bigshows.utils.GenericImageLoaderOptionBuilder;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -35,12 +36,7 @@ public class AiringToday_Credits_castAdpater extends RecyclerView.Adapter<Airing
     public AiringToday_Credits_castAdpater.CastViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
         imageLoader = ImageLoader.getInstance();
-        options = new DisplayImageOptions.Builder().cacheInMemory(true)
-                .cacheOnDisc(true).resetViewBeforeLoading(true)
-                .showImageOnLoading(R.drawable.image_progress_anim)
-                .showImageForEmptyUri(R.drawable.broken_image)
-                .showImageOnFail(R.drawable.broken_image)
-                .build();
+        options = GenericImageLoaderOptionBuilder.getOptions();
         return new AiringToday_Credits_castAdpater.CastViewHolder(view);
     }
 
@@ -48,7 +44,7 @@ public class AiringToday_Credits_castAdpater extends RecyclerView.Adapter<Airing
     public void onBindViewHolder(AiringToday_Credits_castAdpater.CastViewHolder holder, int position) {
 
         holder.mCharacterName.setText(mAiringTodayTVShowsCredits_castWrappers.get(position).getCharacter());
-        holder.mOriginalName.setText(mAiringTodayTVShowsCredits_castWrappers.get(position).getName());
+       // holder.mOriginalName.setText(mAiringTodayTVShowsCredits_castWrappers.get(position).getName());
         imageLoader.displayImage(Constants.IMAGE_PATH + mAiringTodayTVShowsCredits_castWrappers.get(position).getProfilePath(),holder.mImageView,options);
         /*try {
             Picasso.with(mContext)
@@ -82,7 +78,7 @@ public class AiringToday_Credits_castAdpater extends RecyclerView.Adapter<Airing
             mCardView = (CardView) itemView.findViewById(R.id.airing_today_credits_crew_cardview);
             mImageView = (ImageView) itemView.findViewById(R.id.airing_today_credits_crew__images);
             mCharacterName = (TextView) itemView.findViewById(R.id.airing_today_credits_crew_character_name);
-            mOriginalName = (TextView) itemView.findViewById(R.id.airing_today_credits_crew_original_name);
+            //mOriginalName = (TextView) itemView.findViewById(R.id.airing_today_credits_crew_original_name);
 
         }
     }

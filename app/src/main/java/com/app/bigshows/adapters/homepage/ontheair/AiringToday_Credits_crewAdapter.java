@@ -16,10 +16,13 @@ import android.widget.TextView;
 import com.app.bigshows.R;
 import com.app.bigshows.model.home.tvshows.AiringTodayTVShowsCredits_CrewWrapper;
 import com.app.bigshows.utils.Constants;
+import com.app.bigshows.utils.GenericImageLoaderOptionBuilder;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Ajay Kumar on 7/13/2016.
@@ -39,12 +42,7 @@ public class AiringToday_Credits_crewAdapter extends RecyclerView.Adapter<Airing
     public AiringToday_Credits_crewAdapter.CrewViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
         imageLoader = ImageLoader.getInstance();
-        options = new DisplayImageOptions.Builder().cacheInMemory(true)
-                .cacheOnDisc(true).resetViewBeforeLoading(true)
-                .showImageOnLoading(R.drawable.image_progress_anim)
-                .showImageForEmptyUri(R.drawable.broken_image)
-                .showImageOnFail(R.drawable.broken_image)
-                .build();
+        options = GenericImageLoaderOptionBuilder.getOptions();
         return new AiringToday_Credits_crewAdapter.CrewViewHolder(view);
     }
 

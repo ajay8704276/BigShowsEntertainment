@@ -65,6 +65,8 @@ public class OnTheAirResultAdapter extends RecyclerView.Adapter<OnTheAirResultAd
         posterPath = mOnTheAir_resultses.get(position).getPosterPath();
         tvShowID = mOnTheAir_resultses.get(position).getId();
         holder.title.setText(mOnTheAir_resultses.get(position).getName());
+        holder.rating.setText(mOnTheAir_resultses.get(position).getVoteAverage().toString());
+        holder.summary.setText(mOnTheAir_resultses.get(position).getOverview());
         holder.airdate.setText(mOnTheAir_resultses.get(position).getFirstAirDate());
         imageLoader.displayImage(Constants.IMAGE_PATH+mOnTheAir_resultses.get(position).getPosterPath(),holder.imageView,options);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -102,16 +104,20 @@ public class OnTheAirResultAdapter extends RecyclerView.Adapter<OnTheAirResultAd
         CardView cardView;
         TextView title;
         TextView airdate;
+        TextView summary;
+        TextView rating;
         ImageView imageView;
         Context mContext;
         public OnTheAirViewHolder(View itemView) {
             super(itemView);
 
             mContext = itemView.getContext();
-            cardView = (CardView) itemView.findViewById(R.id.material_cardview);
-            title = (TextView) itemView.findViewById(R.id.tv_on_the_air_title);
-            airdate = (TextView) itemView.findViewById(R.id.tv_on_the_air_date);
-            imageView = (ImageView) itemView.findViewById(R.id.home_on_the_air_images);
+            cardView = (CardView) itemView.findViewById(R.id.airing_today_cardview);
+            title = (TextView) itemView.findViewById(R.id.tv_movie_title);
+            rating = (TextView) itemView.findViewById(R.id.tv_movie_rating);
+            summary = (TextView) itemView.findViewById(R.id.tv_movie_summary);
+            airdate = (TextView) itemView.findViewById(R.id.tv_movie_release_date);
+            imageView = (ImageView) itemView.findViewById(R.id.iv_poster_image);
 
         }
 

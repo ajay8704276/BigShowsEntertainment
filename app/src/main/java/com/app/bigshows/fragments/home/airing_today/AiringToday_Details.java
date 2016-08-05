@@ -52,6 +52,7 @@ public class AiringToday_Details extends Fragment {
     private List<AiringTodayTVShows_NetworkWrapper> mAiringTodayTVShows_networkWrappers;
     private List<AiringTodayTVShows_ProductionCompanyWrapper> mAiringTodayTVShows_productionCompanyWrappers;
     private List<AiringTodayTVShows_SeasonWrapper> mAiringTodayTVShows_seasonWrappers;
+    private AiringTodayTVShows mAiringTodayTVShows;
 
     //Empty constructor required
 
@@ -96,6 +97,7 @@ public class AiringToday_Details extends Fragment {
                     if (response.isSuccessful()) {
                         if (response.body() != null) {
 
+                            mAiringTodayTVShows = response.body();
                             mAiringTodayTVShows_createdByWrappers = response.body().getCreatedBy();
                             mAiringTodayTVShows_genreWrappers = response.body().getGenres();
                             mAiringTodayTVShows_networkWrappers = response.body().getNetworks();
@@ -106,7 +108,7 @@ public class AiringToday_Details extends Fragment {
                             //set view
                             setView(response);
 
-                            mAiringTodayDetailsSeasonsAdapter = new AiringToday_Details_SeasonsAdapter(mAiringTodayTVShows_seasonWrappers, R.layout.airing_today_details_season_cardview, getContext());
+                            mAiringTodayDetailsSeasonsAdapter = new AiringToday_Details_SeasonsAdapter(mAiringTodayTVShows_seasonWrappers,mAiringTodayTVShows, R.layout.airing_today_details_season_cardview, getContext());
                             mRecyclerView.setAdapter(mAiringTodayDetailsSeasonsAdapter);
                             mRecyclerView.hasFixedSize();
 

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_margin="@dimen/activity_horizontal_margin"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_margin="@dimen/activity_horizontal_margin"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
     <android.support.v7.widget.CardView
-        android:background="@color/cardview_light_background"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
         android:id="@+id/airing_today_credits_cast_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -17,9 +18,10 @@
             android:orientation="vertical"
             android:padding="@dimen/activity_horizontal_margin">
 
-            <ImageView
+            <com.app.bigshows.utils.RoundImageView
                 android:id="@+id/airing_today_credits_cast__images"
-                android:layout_width="match_parent"
+                android:layout_width="180dp"
+                android:layout_centerHorizontal="true"
                 android:layout_height="180dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter" />
@@ -37,20 +39,21 @@
                     android:weightSum="2">
 
                     <TextView
+                        android:textColor="@android:color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Producer Name "
+                        android:text="Producer name "
                         android:textSize="@dimen/maetrial_card_tv_on_air_title"
-                        android:textStyle="bold|italic" />
+                     />
 
                     <TextView
+                        android:textColor="@android:color/white"
                         android:id="@+id/airing_today_credits_cast_producer_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="@dimen/maetrial_card_tv_on_air_title"
-                        android:textStyle="bold|italic" />
+                        android:textSize="@dimen/maetrial_card_tv_on_air_title"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -60,20 +63,22 @@
                     android:weightSum="2">
 
                     <TextView
+                        android:textColor="@android:color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="JOB "
+                        android:text="Job "
                         android:textSize="@dimen/maetrial_card_tv_on_air_title"
-                        android:textStyle="bold|italic" />
+                         />
 
                     <TextView
+                        android:textColor="@android:color/white"
                         android:id="@+id/airing_today_credits_cast_job"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.5"
                         android:textSize="@dimen/maetrial_card_tv_on_air_title"
-                        android:textStyle="bold|italic" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
@@ -83,20 +88,22 @@
                     android:weightSum="2">
 
                     <TextView
+                        android:textColor="@android:color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Department "
                         android:textSize="@dimen/maetrial_card_tv_on_air_title"
-                        android:textStyle="bold|italic" />
+                        />
 
                     <TextView
+                        android:textColor="@android:color/white"
                         android:id="@+id/airing_today_credits_cast_department"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:textSize="@dimen/maetrial_card_tv_on_air_title"
-                        android:textStyle="bold|italic" />
+                         />
                 </LinearLayout>
 
             </LinearLayout>

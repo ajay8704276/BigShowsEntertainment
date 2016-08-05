@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.app.bigshows.R;
 import com.app.bigshows.model.home.tvshows.AiringTodayTVShowsSimilar_TVShows_ResultWrapper;
 import com.app.bigshows.utils.Constants;
+import com.app.bigshows.utils.GenericImageLoaderOptionBuilder;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -38,13 +39,7 @@ public class AiringToday_Similar_TVShowsAdapter extends RecyclerView.Adapter<Air
         View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout,parent,false);
 
         imageLoader = ImageLoader.getInstance();
-        options = new DisplayImageOptions.Builder().cacheInMemory(true)
-                .cacheOnDisc(true).resetViewBeforeLoading(true)
-                .showImageForEmptyUri(R.drawable.broken_image)
-                .showImageOnLoading(R.drawable.image_progress_anim)
-                .showImageOnFail(R.drawable.broken_image)
-
-                .build();
+        options = GenericImageLoaderOptionBuilder.getOptions();
 
         return new AiringToday_Similar_TVShowsAdapter.TVShowsCardViewHolder(view);
     }

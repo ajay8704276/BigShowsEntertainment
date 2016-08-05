@@ -137,7 +137,7 @@ public class Home_AiringToday  extends Fragment {
                         dialogHelper.dismiss();
                         if(response.body()!=null){
                             final List<OnTheAir_Results> onTheAirResults = response.body().getResults();
-                            mAirResultAdapter = new OnTheAirResultAdapter(onTheAirResults, R.layout.material_card, getContext());
+                            mAirResultAdapter = new OnTheAirResultAdapter(onTheAirResults, R.layout.material_airing_tvshows_card, getContext());
                             mRecyclerView.setAdapter(mAirResultAdapter);
                             mRecyclerView.hasFixedSize();
                         }

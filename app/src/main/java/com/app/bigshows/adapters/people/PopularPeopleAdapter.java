@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.app.bigshows.R;
 import com.app.bigshows.model.People.People;
 import com.app.bigshows.utils.Constants;
+import com.app.bigshows.utils.GenericImageLoaderOptionBuilder;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
@@ -19,6 +20,8 @@ import com.nostra13.universalimageloader.core.process.BitmapProcessor;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Ajay Kumar on 8/3/2016.
@@ -71,20 +74,7 @@ public class PopularPeopleAdapter extends RecyclerView.Adapter<RecyclerView.View
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.popular_people_cardview, parent, false);
         final PopularPeopleViewHolder holder = new PopularPeopleViewHolder(view);
         imageLoader = ImageLoader.getInstance();
-        options = new DisplayImageOptions.Builder()
-                .bitmapConfig(Bitmap.Config.RGB_565)
-                .cacheOnDisc(true).resetViewBeforeLoading(true)
-                .imageScaleType(ImageScaleType.IN_SAMPLE_INT)
-                .showImageOnLoading(R.drawable.image_progress_anim)
-                .showImageForEmptyUri(R.drawable.broken_image)
-                .showImageOnFail(R.drawable.broken_image)
-                .postProcessor(new BitmapProcessor() {
-                    @Override
-                    public Bitmap process(Bitmap bmp) {
-                        return Bitmap.createScaledBitmap(bmp, 300, 300, false);
-                    }
-                })
-                .build();
+        options = GenericImageLoaderOptionBuilder.getOptions();
 
         return holder;
     }

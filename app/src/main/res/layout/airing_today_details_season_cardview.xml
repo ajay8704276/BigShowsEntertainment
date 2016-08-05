@@ -1,61 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="@dimen/activity_horizontal_margin"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
-        android:background="@color/cardview_light_background"
-        android:id="@+id/airing_today_details_cardview"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/airing_today_detail_season_cardview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="3dp"
+        card_view:cardCornerRadius="2dp">
 
-        <RelativeLayout
-            android:orientation="vertical"
-            android:padding="@dimen/activity_horizontal_margin"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:weightSum="10">
 
             <ImageView
-                android:scaleType="fitCenter"
-                android:adjustViewBounds="true"
-                android:id="@+id/airing_today_details_images"
-                android:layout_width="match_parent"
-                android:layout_height="180dp" />
-            <TextView
-                android:layout_below="@+id/airing_today_details_images"
-                android:paddingLeft="32dp"
-                android:textStyle="bold|italic"
-                android:text="Hello Ajay"
-                android:id="@+id/airing_today_details_airdate"
-                android:textSize="@dimen/maetrial_card_tv_on_air_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:id="@+id/iv_poster_image"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:contentDescription="@string/poster_image_description"/>
 
-            <TextView
-                android:layout_below="@+id/airing_today_details_airdate"
-                android:paddingLeft="32dp"
-                android:textStyle="bold|italic"
-                android:paddingTop="@dimen/activity_horizontal_margin"
-                android:text="Air Date"
-                android:textSize="@dimen/activity_horizontal_margin"
-                android:id="@+id/airing_today_details_episode_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:paddingBottom="5dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:paddingTop="5dp">
 
-            <TextView
-                android:textStyle="bold|italic"
-                android:paddingTop="6dp"
-                android:text="More Info"
-                android:textSize="@dimen/activity_horizontal_margin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/airing_today_details_season_number"
-                android:layout_below="@+id/airing_today_details_images"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="38dp" />
+                <TextView
+                    android:id="@+id/tv_movie_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/list_title_text_color"
+                    android:textSize="18sp"
+                    tools:text="Test title"/>
 
-        </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_movie_genre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_movie_title"
+                    android:textColor="@color/list_release_date_text_color"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="Test Genre"/>
+
+                <TextView
+                    android:id="@+id/tv_movie_runtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_movie_genre"
+                    android:paddingTop="5dp"
+                    android:textColor="@color/list_release_date_text_color"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="7/10"/>
+
+
+                <RelativeLayout
+                    android:id="@+id/season"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_movie_runtime">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:text="season no"
+                            android:textColor="@color/list_release_date_text_color"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/tv_movie_season_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:text="1"
+                            android:textColor="@color/list_release_date_text_color"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/airdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/season">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:text="Air Date"
+                            android:textColor="@color/list_release_date_text_color"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/tv_movie_air_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingTop="5dp"
+                            android:text="1"
+                            android:textAlignment="gravity"
+                            android:textColor="@color/list_release_date_text_color"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/episode_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/airdate">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:text="Episode count"
+                            android:textColor="@color/list_release_date_text_color"
+                            android:textSize="12sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/tv_movie_episode_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingTop="5dp"
+                            android:text="12"
+                            android:textAlignment="gravity"
+                            android:textColor="@color/list_release_date_text_color"
+                            android:textSize="12sp"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 

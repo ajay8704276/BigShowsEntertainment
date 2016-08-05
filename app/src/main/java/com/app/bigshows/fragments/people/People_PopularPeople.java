@@ -66,7 +66,7 @@ public class People_PopularPeople extends Fragment {
     private void initViews(View view) {
 
         mPopularPeopleRV = (RecyclerView) view.findViewById(R.id.people_recyclerview);
-        mLinearLayoutManager = new GridLayoutManager(getContext(),2);
+        mLinearLayoutManager = new LinearLayoutManager(getContext());
         mPopularPeopleRV.setLayoutManager(mLinearLayoutManager);
         mPopularPeopleRV.hasFixedSize();
 
