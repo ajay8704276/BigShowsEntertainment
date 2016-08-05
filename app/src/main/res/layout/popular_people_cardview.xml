@@ -23,7 +23,8 @@
         android:layout_height="match_parent"
         >
 
-        <TextView
+        <com.app.bigshows.utils.BigShowsFontTextView
+            app:fontName="LobsterTwo-Regular.otf"
             android:id="@+id/people_knownfor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,21 +33,22 @@
             android:maxLines="1"
             android:paddingTop="8dp"
             android:text="Almaty region "
-            android:textColor="@android:color/darker_gray"
-            android:textSize="12sp"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
 
             android:layout_marginBottom="20dp"
             android:layout_alignParentBottom="true"
             android:layout_alignEnd="@+id/people_name"/>
 
-        <TextView
+        <com.app.bigshows.utils.BigShowsFontTextView
+            app:fontName="LobsterTwo-Regular.otf"
             android:id="@+id/people_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="Medeu"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:layout_marginStart="23dp"
             android:layout_above="@+id/people_knownfor"
             android:layout_alignParentStart="true"/>
