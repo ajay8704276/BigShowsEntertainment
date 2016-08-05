@@ -116,6 +116,11 @@
             android:theme="@style/MyMaterialTheme"
             android:parentActivityName=".activity.home.BigShowsHomeActivity"/>
 
+        <activity android:name=".activity.people.PeopleDetailActivity"
+                  android:label=""
+                  android:theme="@style/MyMaterialTheme"
+                  android:parentActivityName=".activity.people.PeopleActivity"/>
+
 
     </application>
 

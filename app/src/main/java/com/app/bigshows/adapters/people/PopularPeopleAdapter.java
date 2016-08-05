@@ -1,6 +1,9 @@
 package com.app.bigshows.adapters.people;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.app.bigshows.R;
+import com.app.bigshows.activity.people.PeopleDetailActivity;
 import com.app.bigshows.model.People.People;
 import com.app.bigshows.utils.Constants;
 import com.app.bigshows.utils.GenericImageLoaderOptionBuilder;
@@ -31,6 +35,7 @@ public class PopularPeopleAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     public static final int ITEM = 0;
     public static final int LOADING = 1;
+    public static final String PERSONID ="PERSONID";
 
     public ImageLoader imageLoader;
     public DisplayImageOptions options;
@@ -38,6 +43,7 @@ public class PopularPeopleAdapter extends RecyclerView.Adapter<RecyclerView.View
     public boolean mIsLoadingFooterAdded = false;
 
     List<People.Result> mPeopleResults;
+    private Context mContext;
 
 
     @Override
@@ -107,6 +113,7 @@ public class PopularPeopleAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private void bindPopularPeopleViewHolder(RecyclerView.ViewHolder holder, int position) {
 
+        final int personID = mPeopleResults.get(position).getId();
         List<People.KnownFor> mKnownFor = mPeopleResults.get(position).getKnownFor();
         StringBuilder mStringBuilder = new StringBuilder();
         for (int i = 0; i < mKnownFor.size(); i++) {
@@ -120,6 +127,14 @@ public class PopularPeopleAdapter extends RecyclerView.Adapter<RecyclerView.View
         mPopularPeopleViewHolder.mPeopleNameTV.setText(mPeopleResults.get(position).getName());
         mPopularPeopleViewHolder.mPeopleKnownFor.setText(mStringBuilder);
         imageLoader.displayImage(Constants.IMAGE_PATH + mPeopleResults.get(position).getProfilePath(), mPopularPeopleViewHolder.mPeopleIV, options);
+        mPopularPeopleViewHolder.mPeopleCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, PeopleDetailActivity.class);
+                intent.putExtra(PERSONID,personID);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -133,9 +148,11 @@ public class PopularPeopleAdapter extends RecyclerView.Adapter<RecyclerView.View
         TextView mPeopleNameTV;
         TextView mPeopleKnownFor;
         ImageView mPeopleIV;
+        CardView mPeopleCardView;
 
         public PopularPeopleViewHolder(View itemView) {
             super(itemView);
+            mPeopleCardView = (CardView) itemView.findViewById(R.id.popular_people_CV);
             mPeopleNameTV = (TextView) itemView.findViewById(R.id.people_name);
             mPeopleKnownFor = (TextView) itemView.findViewById(R.id.people_knownfor);
             mPeopleIV = (ImageView) itemView.findViewById(R.id.popular_imageview);
@@ -207,9 +224,10 @@ public class PopularPeopleAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
 
-    public PopularPeopleAdapter() {
-
+    public PopularPeopleAdapter(Context mContext) {
         mPeopleResults = new ArrayList<>();
+        this.mContext = mContext;
+
     }
 
 }

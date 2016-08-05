@@ -28,4 +28,7 @@
     <color name="float_button_primary_pressed">#388E3C</color>
     <color name="float_button_ripple">#2E7D32</color>
 
+
+    <color name="crimson">#DC143C</color>
+
 </resources>

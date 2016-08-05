@@ -74,7 +74,7 @@ public class People_PopularPeople extends Fragment {
         mPopularPeopleRV.setLayoutManager(mStaggeredGridLayoutManager);
         mPopularPeopleRV.hasFixedSize();*/
 
-        mPopularPeopleAdapter = new PopularPeopleAdapter();
+        mPopularPeopleAdapter = new PopularPeopleAdapter(getContext());
         mPopularPeopleRV.setAdapter(mPopularPeopleAdapter);
 
         //pagination starts here
